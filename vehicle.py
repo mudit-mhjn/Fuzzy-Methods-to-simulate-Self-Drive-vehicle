@@ -36,7 +36,7 @@ class Car:
         self.position.y = min(self.position.y, constants.SCREEN_HEIGHT - constants.CAR_HEIGHT)
 
     def check_collision(self):
-        return 
+        return
 
     def center_position(self):
         return Vector2(self.position.x + constants.CAR_WIDTH/2, self.position.y + constants.CAR_HEIGHT/2)
@@ -50,7 +50,7 @@ class Car:
             z = z + 1
             pos_x = self.center_position().x + z*math.cos(angle - angle_direction)
             pos_y = self.center_position().y + z*math.sin(angle - angle_direction)
-            
+
         sensor_input = str(distance(self.center_position().x, self.center_position().y, pos_x, pos_y))
         return sensor_input
 
@@ -65,11 +65,11 @@ class Car:
         pos_x = self.center_position().x
         pos_y = self.center_position().y
         z = 0
-        while(valid_position(int(pos_x), int(pos_y)) and matrix[int(pos_x)][int(pos_y)] != constants.OFFROAD):
+        while(valid_position(int(pos_x), int(pos_y)) and matrix[int(pos_x)][int(pos_y)] == constants.OFFROAD):
             z = z + 1
             pos_x = self.center_position().x + z*math.cos(angle - angle_direction)
             pos_y = self.center_position().y + z*math.sin(angle - angle_direction)
-            
+
         sensor_input = str(distance(self.center_position().x, self.center_position().y, pos_x, pos_y))
         return sensor_input
 
@@ -95,4 +95,3 @@ class Car:
         x = int(x)
         y = int(y)
         return road_matrix[x, y] == constants.OFFROAD
-
